@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+long double fact(int N)
+{
+    if(N < 0) 
+        return 0; 
+    if (N == 0) 
+        return 1; 
+    else 
+        return N * fact(N - 1); 
+}
+
+int main()
+{
+    int N;
+    cin >> N;
+    cout << N << fact(N) << endl << endl;
+    int n=0;
+    while(N>0)
+    {
+        if (N%10==0)
+            n++;
+        N/=10;
+    }
+    std::cout<<n<<std::endl;
+}
+  
