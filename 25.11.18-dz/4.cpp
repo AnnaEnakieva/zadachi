@@ -1,46 +1,25 @@
-/*Напишите программу находящую первые n составных чисел.
-Программа должна работать не более чем за O(n*log log n) шагов.*/
+/*Напишите программу находящую первые n составных чисел.*/
 
 #include <iostream>
 using namespace std;
-void function getSimpleNumbers(numbers)
-{
-    if (numbers < 1 || typeof numbers != 'number') {
-        return 0;
-    }
-    numbers = Math.floor(numbers);
-    
-    var sn = 2;
-    var simples = [1];
-    var isItSimple = false;
-    
-    while (simples.length < numbers) {
-        for (var i=2; i<sn/2; i++)
-        {
-            if (sn % i == 0)
- 
-                isItSimple = true;
-                break;
-        }
-        
-        if (isItSimple == true) {
-            simples.push(sn);
-        }
-        
-        isItSimple = true;
-        sn++;
-    }
-    return simples;
-
-}
 int main ()
 {
-    int n;
-    cin >> n;
-    for (int i=0; i<n;i++)
+    
+    int k, n, l = 0; // l - счетчик количества составных чисел
+    cout << "n = ";
+    cin >> n; // вводим количество составных чисеел
+    cout << "Composite: ";
+    for (k = 4; l < n; k++) // перебираем все числа, начиная с первого составного
     {
-        function getSimpleNumbers(numbers);
-    cout << numbers;
+        for (int i = 2; i < k; i++)
+        {
+            if ((k % i) == 0)
+            {
+                cout << k << ' ';
+                l++;
+                break;
+            }
+        }
     }
     return 0;
 }
