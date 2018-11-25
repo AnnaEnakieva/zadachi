@@ -1,20 +1,28 @@
 /*Напишите рекурсивную функцию, позволяющую вычислять значение функции Эйлера.
 */
 
+
 #include <iostream>
- 
+#include <string>
 using namespace std;
- 
-int main () {
-    long long n, ans;
-    cin >> n;
-    ans = n;
-    for (long long i = 2; i*i <= n; i++)
+  int phi (int n)
+  {
+    int result = n;
+    for (int i=2; i*i<=n; ++i)
         if (n % i == 0) {
-            while (n % i == 0) n/= i;
-            ans-=ans/i;
-        }
-    if (n > 1) ans-=ans/n;
-    cout << ans;
-    return 0;   
+            while (n % i == 0)
+                n /= i;
+result -= result / i;
 }
+if (n > 1)
+result -= result / n;
+return result;
+}
+
+  int main() {
+    int n;
+    cin >> n;
+    cout<<phi( n);
+    return 0;
+}
+
