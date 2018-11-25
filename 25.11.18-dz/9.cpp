@@ -7,7 +7,7 @@ O(n*log log n) шагов.*/
 using namespace std;
 bool krya(int n)
 {
-    int i=2,k;
+    int i=2, k=0;
     k=sqrt(n);
     while (((n% i)!=0) && (i<=k))
     {
@@ -18,11 +18,11 @@ bool krya(int n)
 }
     int main ()
     {
-        int i,k,n,m=0;
+        int i,n,m=0;
         
-        cin >> k >> n;
+        cin >> n;
         
-        for (i=k; i<n;i++)
+        for (i=0; i<n;i++)
         {
             if (krya(i) && krya(i*2+1) )
             {
