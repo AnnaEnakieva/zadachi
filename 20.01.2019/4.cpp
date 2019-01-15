@@ -30,8 +30,6 @@ int R( int x, int y, int z)
     if ( x < y && y != z)
     {
         n = R( x, y-5, z);
-        //if ( y - 5 == 0 )
-           // n = n + R( x, y/5, z );
         if ( kvadrat( y ) == true )
             n = n + R( x, sqrt(y), z);
         if ( y % 3 == 0 )
