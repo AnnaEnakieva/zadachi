@@ -11,11 +11,12 @@ int main()
 {
 	int i, comp = 1, n;
 	cin >> n;
-	int s[] = {0};
+	int *s =  new int(n);
 	for(i = 1; i < n; i++)
 	{
 		cin >> s[i];
 	}
+	//delete (s);
 	for(i = 1; i < n; i++)
 	{
 		if(s[i] % 2 != 0 && s[i] % 3 == 0)
