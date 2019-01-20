@@ -21,6 +21,7 @@ int main()
 				maxcomp = a[i] * a[j];
 		}
 	}
+	delete a;
 	cout << maxcomp;
 	return 0;
 }
