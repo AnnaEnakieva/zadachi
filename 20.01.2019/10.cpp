@@ -22,6 +22,7 @@ int main()
 		if(s[i] % 2 != 0 && s[i] % 3 == 0)
        comp = comp * s[i];
 	}
+	delete s;
 	cout << comp;
 	return 0;
 }
