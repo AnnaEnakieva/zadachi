@@ -25,5 +25,6 @@ for(i = d + 1; i < N; i++)
 		min = x + minx;
 	a[i % d] = x;
 }
+delete a;
 cout << min;
 }
