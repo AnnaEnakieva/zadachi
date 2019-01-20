@@ -39,6 +39,7 @@ int main()
 			a[j] = a[j + 1];
 		a[6] = x;
 	}
+	delete a;
 	if (max_pr = 1000001)
 		max_pr = -1;
 	cout << max_pr;
