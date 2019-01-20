@@ -18,6 +18,7 @@ int main()
 		if(s[i] <= 2 * s[i-1])
 			k++;
 	}
+	delete s;
 	cout << k;
 	return 0;
 }
