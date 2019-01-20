@@ -25,5 +25,6 @@ for(i = d + 1; i < N; i++)
 		max = x + maxx;
 	a[i % d] = x;
 }
+	delete a;
 cout << max;
 }
