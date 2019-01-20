@@ -21,6 +21,7 @@ for(i = 1; i < n - d; i++)
 			minsum = a[i] + a[j];
 	}
 }
+delete a;
 cout << minsum;
 	return 0;
 }
