@@ -9,38 +9,48 @@
 которых прошло не менее 6 минут. Если получить такое произведение не удаётся,
 ответ считается равным –1. Программа должна быть эффективной по времени и
 памяти.*/
+// СДЕЛАНО НА ПОИСК МИНИМАЛЬНОГО ЗНАЧЕНИЯ
+#include "pch.h"
 #include <iostream>
 using namespace std;
 int main()
 {
-	int m, x, max_a, max_a_ch, n; // четные
-	long int pr = 1000001, max_pr = 1000001;
-	int *a = new int(6);
-  max_a = n+1;
-  max_a_ch = n+1;
-		cin >> m;
-	for (int i = 1; i < 6; i++) 
-		cout << a[i];
-	for( int i = 7; i < m; i++)
-	{
-		cin >> x;
-
-		if(a[1] > max_a)
-			max_a = a[1];
-		if((a[1] % 2 == 0) && (a[1] > max_a_ch))
-			miax_a_ch = a[1];
-		if(x % 2 == 0)
-			pr = x * max_a;
-		else if(max_a_ch > n+1)
-			pr = x * max_a_ch;
-		if(pr > max_pr)
-			min_pr = pr;
-		for( int j = 1; j < 5; j++)
-			a[j] = a[j + 1];
-		a[6] = x;
-	}
-	delete a;
-	if (max_pr = 1000001)
-		max_pr = -1;
-	cout << max_pr;
+	int s = 6; //{требуемое расстояние между показаниями}
+	int amax = 1001;//{больше максимально возможного показания}
+		int N ;
+		int *a = new int[s];//{хранение s показаний прибора}
+		int a_;//{ввод очередного показания}
+		int ma;//{минимальное число без s последних}
+		int me; //{минимальное чётное число без s последних}
+		int mp; //{минимальное значение произведения}
+		long int p;
+		int i, j;
+		cin >> N;
+	//{Ввод первых s чисел}
+	for (i = 0; i < s; i++) 
+		cin >> a[i];
+	//{Ввод остальных значений, поиск минимального произведения}
+	ma = amax; 
+	me = amax;
+	mp = amax * amax;
+	for (i = s + 1; i < N; i++) 
+		cin >>a_;
+	if (a[0] < ma) 
+		ma = a[0];
+	if(( a[0] % 2 == 0) && (a[0] < me)) 
+		me  = a[0];
+	if(a_ % 2 == 0)
+		p = a_ * ma;
+	else if(me < amax)
+		p = a_ * me;
+	else p = amax * amax;
+	if(p < mp) mp = p;
+	//{сдвигаем элементы вспомогательного массива влево}
+	for(j = 0; j < (s - 1); j++) 
+		a[j]  = a[j + 1];
+	a[s] = a_;
+	if (mp = amax * amax) 
+		mp = -1;
+	cout << mp;
+	return 0;
 }
