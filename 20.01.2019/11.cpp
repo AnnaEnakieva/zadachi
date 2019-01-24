@@ -10,7 +10,7 @@ int main()
 {
 	int i, k = 0, n, b = 30000;
 	cin >> n;
-	int *s = new int(n);
+	int *s = new int[n];
 	for(i = 0; i < n; i++)
 		cin >> s[i];
 	for(i = 1; i < n; i++)
@@ -18,7 +18,7 @@ int main()
 		if(s[i] <= 2 * s[i-1])
 			k++;
 	}
-	delete s;
+	delete []s;
 	cout << k;
 	return 0;
 }
