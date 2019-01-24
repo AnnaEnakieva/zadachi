@@ -16,13 +16,11 @@ int main()
 	{
 		cin >> s[i];
 	}
-	//delete (s);
 	for(i = 1; i < n; i++)
 	{
 		if(s[i] % 2 != 0 && s[i] % 3 == 0)
        comp = comp * s[i];
 	}
-	delete s;
 	cout << comp;
 	return 0;
 }
