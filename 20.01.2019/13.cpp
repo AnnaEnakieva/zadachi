@@ -9,7 +9,7 @@ int main()
 {
 	int i, j, d = 5, n = 0, maxcomp;
 	cin >> n;
-	int *a = new int(n);
+	int *a = new int[n];
 	for(i = 0; i < n; i++)
 		cin >> a[i];
 	maxcomp = 0;
@@ -21,7 +21,7 @@ int main()
 				maxcomp = a[i] * a[j];
 		}
 	}
-	delete a;
+	delete []a;
 	cout << maxcomp;
 	return 0;
 }
