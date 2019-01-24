@@ -9,7 +9,7 @@ int main()
 {
 int i, j, d = 5, n = 0, minsum;
 cin >> n;
-int *a = new int(n);
+int *a = new int[n];
 for (i = 0; i < n; i++ ) 
 cin >> a[i];
 minsum = 2001;
@@ -21,7 +21,7 @@ for(i = 1; i < n - d; i++)
 			minsum = a[i] + a[j];
 	}
 }
-delete a;
+delete []a;
 cout << minsum;
 	return 0;
 }
