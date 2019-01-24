@@ -11,7 +11,7 @@ int main()
 	int i, k = 0, n, b = 30000;
 	cin >> n;
 	int *s = new int(n);
-	for(i = 1; i < n; i++)
+	for(i = 0; i < n; i++)
 		cin >> s[i];
 	for(i = 1; i < n; i++)
 	{
