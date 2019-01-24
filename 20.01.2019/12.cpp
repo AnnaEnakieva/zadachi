@@ -2,26 +2,32 @@
 длины N неотрицательных целых чисел необходимо: минимальную сумму двух её
 элементов, номера которых различаются не менее чем на 5. Программа может
 быть неэффективной.*/
-
 #include <iostream>
 using namespace std;
-int main()
+int min(int a, int b)
 {
-int i, j, d = 5, n = 0, minsum;
-cin >> n;
-int *a = new int[n];
-for (i = 0; i < n; i++ ) 
-cin >> a[i];
-minsum = 2001;
-for(i = 1; i < n - d; i++)
-{
-	for(j = i + d; j < n; j++)
-	{
-		if (a[i] + a[j] < minsum)
-			minsum = a[i] + a[j];
+	if (a < b) {
+		return a;
 	}
+	return b;
 }
-delete []a;
-cout << minsum;
+int minSum(int *array, int arraySize) {
+	int result = 2147483647;
+	for (int i = 0; i < arraySize - 5; i++) {
+		for (int j = i + 5; j < arraySize; j++) {
+			result = min(result, array[i] + array[j]);
+		}
+	}
+	return result;
+}
+int main() {
+	int arraySize;
+	cin >> arraySize;
+	int *array = new int[arraySize];
+	for (int i = 0; i < arraySize; i++)
+	{
+		cin >> array[i];
+	};
+	cout << minSum(array, arraySize);
 	return 0;
 }
