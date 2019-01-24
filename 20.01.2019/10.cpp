@@ -11,7 +11,7 @@ int main()
 {
 	int i, comp = 1, n;
 	cin >> n;
-	int *s =  new int(n);
+	int *s =  new int[n];
 	for(i = 0; i < n; i++)
 	{
 		cin >> s[i];
@@ -21,6 +21,7 @@ int main()
 		if(s[i] % 2 != 0 && s[i] % 3 == 0)
        comp = comp * s[i];
 	}
+	delete []s;
 	cout << comp;
 	return 0;
 }
