@@ -33,6 +33,7 @@ int main()
 	}
 	if (a[imax] == 0) 
 		imax = 0;
+	delete []a;
 	cout << imax;
 	return 0;
 }
