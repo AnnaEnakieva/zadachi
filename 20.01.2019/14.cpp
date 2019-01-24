@@ -5,26 +5,31 @@
 
 #include <iostream>
 using namespace std;
-int main()
-{
-		int N, x, i, maxx = 0, d = 5 ;
-		int *a = new int[d-1];
-int max = 0; //{ максимальное значение произведения}
-cin >> N;
-for (i= 0; i < d ; i++)
-{
-	cin >> x;
-	a[ i % d ] = x;
-}
-for(i = d + 1; i < N; i++)
-{
-	cin >> x;
-	if(a[i % d] > maxx)
-		maxx = a[i % d];
-	if(x + maxx > max)
-		max = x + maxx;
-	a[i % d] = x;
-}
-	delete []a;
-cout << max;
+int main() {
+	int m = 0;
+	int mx = 0;
+	int x;
+	int d = 5;
+	int N;
+	cin >> N;
+	int *array = new int[d - 1];
+	for (int i = 0; i < d; i++)
+	{
+		cin >> x;
+		array[i % d] = x;
+	}
+	for (int i = d; i < N; i++)
+	{
+		cin >> x;
+		if (array[i % d] > mx) {
+			mx = array[i % d];
+		}
+		if (x + mx > m)
+		{
+			m = x + mx;
+			array[i % d] = x;
+		}
+	}
+	cout << m;
+	return 0;
 }
