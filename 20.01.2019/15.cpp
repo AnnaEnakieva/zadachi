@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 		int N, x, i, minx = 0, d = 5 ;
-		int *a = new int(d-1);
+		int *a = new int[d-1];
 int min = 0; //{ максимальное значение произведения}
 cin >> N;
 for (i = 0; i < d ; i++)
@@ -25,6 +25,6 @@ for(i = d + 1; i < N; i++)
 		min = x + minx;
 	a[i % d] = x;
 }
-delete a;
+delete []a;
 cout << min;
 }
