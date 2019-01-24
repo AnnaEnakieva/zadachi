@@ -5,23 +5,29 @@
 
 #include <iostream>
 using namespace std;
-int main()
+int max(int a, int b)
 {
-	int i, j, d = 5, n = 0, maxcomp;
-	cin >> n;
-	int *a = new int[n];
-	for(i = 0; i < n; i++)
-		cin >> a[i];
-	maxcomp = 0;
-	for(i = 1; i < n - d; i++)
+	if (a > b)
+		return a;
+	return b;
+}
+int maxMult(int *array, int arraySize)
+{
+	int result = 0;
+	for (int i = 0; i < arraySize - 5; i++) 
 	{
-		for(j = i + d; j < n; j++)
-		{
-			if(a[i] + a[j] > maxcomp)
-				maxcomp = a[i] * a[j];
-		}
+		for (int j = i + 5; j < arraySize; j++) 
+			result = max(result, array[i] * array[j]);
 	}
-	delete []a;
-	cout << maxcomp;
+	return result;
+}
+int main() 
+{
+	int arraySize;
+	cin >> arraySize;
+	int *array = new int[arraySize];
+	for (int i = 0; i < arraySize; i++)
+		cin >> array[i];
+	cout << maxMult(array, arraySize);
 	return 0;
 }
