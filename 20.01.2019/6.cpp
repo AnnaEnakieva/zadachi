@@ -17,7 +17,7 @@ int *b;// массив, содержащий шаги
 int R( int x, int y, int z, int N)
 {
     int n = 0;
-    if ( x < y && y == z)
+    if ( x < y && y != z)
     {
             if ( y - 2 >= x)
             {
