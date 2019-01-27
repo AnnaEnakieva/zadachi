@@ -8,39 +8,52 @@
 Если такой программы нет – выписать NO. Если коротких программ несколько – выписать любую из них.*/
 
 #include <iostream>
+#include <stdlib.h>
 #include <math.h>
+#include <string.h>
+
 using namespace std;
 // переменная, в которую мы сохраняем длину самой короткой программы
 int H;
 int *a; // массив, содержащий самую короткую программу
 int *b;// массив, содержащий шаги
+bool bWasZ = false;
 int R( int x, int y, int z, int N)
 {
     int n = 0;
-    if ( x < y && y == z)
+
+    if ( x < y )
     {
-            if ( y - 2 >= x)
-            {
-                b[ N ] = 1;
-                n = R( x, y - 2, z, (N + 1));
-            }
-            if ( y - 4 >= x)
-            {
-                b[N] = 2;
-                n = R( x, y - 4, z, (N + 1));
-            }
-            if ( y - 5 >= x)
-            {
-                b[N] = 3;
-                n = R( x, y - 5, z, (N + 1));
-            }
-            if ( y % 3 == 0 )
-            {
-                b[N] = 4;
-                n = n + R( x, y/3, z, N + 1);
-            }
+        if ( y == z )
+        {
+            bWasZ = true;
+        }
+        if ( y - 2 >= x)
+        {
+            b[ N ] = 1;
+            n = n + R( x, y - 2, z, (N + 1));
+        }
+        if ( y - 4 >= x)
+        {
+            b[N] = 2;
+            n = n + R( x, y - 4, z, (N + 1));
+        }
+        if ( y - 5 >= x)
+        {
+            b[N] = 3;
+            n = n + R( x, y - 5, z, (N + 1));
+        }
+        if ( y % 3 == 0 )
+        {
+            b[N] = 4;
+            n = n + R( x, y/3, z, N + 1);
+        }
+        if ( y == z )
+        {
+            bWasZ = false;
+        }
     }
-    else if ( x == y)
+    else if ( x == y && bWasZ == true)
     {
         n = 1;
         // дошли до конца программмы
@@ -65,15 +78,15 @@ int main()
     }
     b = new int [H];
     n = R( x, y, z, 0);
-    cout << H << endl;
-    if ( n == 0)
+    if ( n == 0 )
         cout << "NO";
-    if ( n != 0)
+    if ( n != 0 )
     {
-    for ( int i = 0; i < H; i++ )
-        cout << a[i] << " ";
+        cout << H << endl; // длинна программы
+        for ( int i = 0; i < H; i++ )
+            cout << a[i] << " "; //кол-во программ
     }
-    delete []a;
-    delete []b;
+    delete [] a;
+    delete [] b;
     return 0;
 }
