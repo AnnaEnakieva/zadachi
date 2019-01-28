@@ -62,7 +62,8 @@ public:
             return data[size - 1];
         }
         else
-            return data[n];             //  Возврат заданного элемента массива
+            return data[n];     //  Возврат заданного элемента массива
+        
     }
     void push_back(double x)            //добавение в конец
     {
@@ -79,12 +80,30 @@ public:
     size++;
     }
     unsigned int Size()
-    {                               //  *Функция, возвращающая размерность вектора
+    {                               //  Функция, возвращающая размерность вектора
         return size;
     }
     unsigned int Capacity()
     {
         return capacity;
+    }
+    void pop_back(double x)
+    {
+        if(size!=0)
+        {
+            double *data2 = new double[size-1];
+            for( int i = 0; i < size-1; i++ )
+            {
+                data2[i] = data[i];
+            }
+            delete []data;
+            size = size - 1;
+            data = new double[size];
+            for( int i = 0; i < size; i++ )
+                data[ i ] = data2[ i ];
+            delete []data2; //удаление промежуточного массива
+        }
+        cout << "вектор пуст";
     }
 };
 
