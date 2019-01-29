@@ -83,11 +83,15 @@ public:
     {                               //  Функция, возвращающая размерность вектора
         return size;
     }
-    unsigned int Capacity()
+    unsigned int Capacity()                 //получение вместимости вектора
     {
         return capacity;
     }
-    void pop_back(double x)
+    void pop_back(double x)             //извлечение из конца: 
+double pop_back()
+                                       //при извлечении - элемент удаляется из вектора, а значение этого элемента возвращается,
+                                        //как результат работы метода
+
     {
         if(size!=0)
         {
