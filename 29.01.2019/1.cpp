@@ -166,21 +166,46 @@ void erase (int a, int b)
         delete (data+i);
     size -= length;
 }
-const double_vector& operator+(const double_vector& A) 
+double_vector &operator+ (double_vector& A, double_vector& B)
 {
-		double* temp = new double[capacity];
-		for (int i = 0; i < size * 2; i++) {
-			if (i <= size)
-				temp[i] = data[i];
-			else
-				temp[i] = A[i];
-		}
-		delete[] data;
-		data = temp;
-	}
+    unsigned int a = A.size(), b = B.size();
+    double_vector T (a + b);
+    for (int i = 0; i < a; i++)
+        T[i] = A[i];
+    for (int i = a; i < a + b; i++)
+        T[i] = B[i - a];
+    return T;
+}
 
-};
 int main()
 {
+    double_vector A ();
+    cout << A[0] << '\n';
+    int n, k, x, a, b;
+    cin >> n;
+    double_vector B (n);
+    for (int i; i < n; i++)
+        cout << B[i] << ' ';
+    cout << '\n';
+    cin >> n;
+    double* T = new double(n);
+    for (int i; i < n; i++)
+        cin >> T[i];
+    double_vector C(T, n);
+    cin >> x;
+    C.push_front(x);
+    cout << C.pop_front() << '\n';
+    cin >> x;
+    C.push_back(x);
+    cout << C.pop_back() << '\n';
+    cin >> k >> x;
+    C.insert (x, k);
+    cin >> a;
+    C.erase(a);
+    cin >> a >> b;
+    C.erase(a, b);
+    double_vector D = C + B;
+    for (int i = 0; i < D.size(); i++)
+        cout << D[i] << ' ';
     return 0;
 }
