@@ -87,26 +87,14 @@ public:
     {
         return capacity;
     }
-    void pop_back(double x)             //извлечение из конца:
+    void pop_back(double x)    
+    {//извлечение из конца:
     //при извлечении - элемент удаляется из вектора, а значение этого элемента возвращается,
     //как результат работы метода
-    
-    {
-        if(size!=0)
-        {
-            double *data2 = new double[size-1];
-            for( int i = 0; i < size-1; i++ )
-            {
-                data2[i] = data[i];
-            }
-            delete []data;
-            size = size - 1;
-            data = new double[size];
-            for( int i = 0; i < size; i++ )
-                data[ i ] = data2[ i ];
-            delete []data2; //удаление промежуточного массива
-        }
-        cout << "вектор пуст";
+        double x = data [size - 1];
+        delete (data + size - 1);
+        size--;
+        return x;
     }
 void resize (unsigned int n)
 {
