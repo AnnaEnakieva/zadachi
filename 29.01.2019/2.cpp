@@ -7,6 +7,11 @@ using namespace std;
 class CycleArray
 {
     public:
+    pair <int, int>* data;
+    int I = 0;
+    int arraySize;
+    CycleArray (int N)
+    {
         arraySize = N;
         data = new pair <int, int> [N];
     };
@@ -67,8 +72,3 @@ int main()
     A.Move (K);
     A.output();
 }
-    pair <int, int>* data;
-    int I = 0;
-    int arraySize;
-    CycleArray (int N)
-    {
