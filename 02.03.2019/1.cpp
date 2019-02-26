@@ -1,3 +1,6 @@
+/*Реализуйте класс double_stack -  стек вещественных чисел переменного размера. Класс должен содержать конструктор, деструктор,
+методы push,pop*/
+
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -47,3 +50,8 @@ class double_stack
             return x;
         }
     };
+
+int main ()
+{
+return 0;
+}
