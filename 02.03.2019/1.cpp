@@ -16,9 +16,9 @@ class double_stack
         };
         Node head; // указатель на стек
     public:
-       double_stack(): head (NULL)
+       double_stack(): 
         {
-            head = 0;
+            head = NULL;
         }// заполнение
         ~double_stack() // деструктор
         {
