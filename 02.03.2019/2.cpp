@@ -14,16 +14,11 @@ class string_queue
     };
     Node *head;
     public:
-    /*void push (int x)
+    string_queue ()//конструктор
     {
-      //  data = new string_queue<string>();
-    Node* temp = new Node;
-    temp -> data = x;
-    temp -> next = head;
-    head  =  temp;
-
-    };*/
-    ~string_queue()
+        head = NULL;
+    }
+    ~string_queue()//деструктор
     {
         while (head !=NULL)
         {
