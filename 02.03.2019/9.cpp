@@ -5,7 +5,7 @@ using namespace std;
 
 class CycleArray
 {
-    public:
+public:
     pair <int, int>* data;
     int I = 0;
     int arraySize;
@@ -54,7 +54,7 @@ class CycleArray
             cout << data[j].first << " " << data[j].second << "\n";
         }
     };
-    Move (int k)
+    void Move (int k)
     {
         I += k;
     }
