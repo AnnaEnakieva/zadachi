@@ -13,10 +13,11 @@ class char_deque
         Node* next = NULL;
         Node* prev = NULL;
         string data;
-        int count;
+       
     };
     Node *head;
     Node* tail;
+    int count;
 public:
     void push_front (int x)//добавление в начало
     {
