@@ -1,3 +1,4 @@
+/* неработающая хрень*/
 #include <iostream>
 using namespace std;
 void Search (int x, node **p)
