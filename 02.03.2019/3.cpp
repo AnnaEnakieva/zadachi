@@ -1,5 +1,5 @@
-/*Реализуйте класс char_deque -  дек символов чисел переменного размера. Класс должен содержать конструктор, деструктор, 
-методы push_front, push_back,pop_front, pop_back*/
+/*Реализуйте класс char_deque -  дек символов чисел переменного размера. Класс должен содержать конструктор, деструктор,
+ методы push_front, push_back,pop_front, pop_back*/
 
 #include <iostream>
 #include <stack>
@@ -11,26 +11,28 @@ class char_deque
     struct Node
     {
         Node* next = NULL;
+        Node* prev = NULL;
         string data;
+        int count;
     };
     Node *head;
     Node* tail;
-    public:
-       void push_front (int x)//добавление в начало
+public:
+    void push_front (int x)//добавление в начало
+    {
+        if (head == NULL)
         {
-           if (head == NULL)
-            {
-                head = new Node;
-                tail = head;
-                head -> data = x;
-                return;
-            }
-            head -> prev = new Node;
-            head -> prev -> next = head;
-            head = head -> prev;
+            head = new Node;
+            tail = head;
             head -> data = x;
-        };
-        void push_back (int x) // добавление в конец
+            return;
+        }
+        head -> prev = new Node;
+        head -> prev -> next = head;
+        head = head -> prev;
+        head -> data = x;
+    };
+    void push_back (int x) // добавление в конец
     {
         if (head == NULL)
         {
@@ -44,56 +46,54 @@ class char_deque
         tail = tail -> next;
         tail -> data = x;
     };
-    void pop_front () // удаление в начале
-        {
-              if (head == NULL)
-            {
-                cout << "Stachis empty"
-                    return 0;
-            }
-        int x = front -> data;
-        Node* temp = front;
-        if ( front -> next != NULL )
-        {
-            front = front -> next;
-            front -> prev = NULL;
-        }
-        else
-        {
-            front = NULL;
-        }
-        count--;
-        delete temp;
-
-        return x;
+    bool isEmpty()
+    {
+        return count == 0 ? true : false;
     }
-        };
-    void pop_back ()//удаление в конце
-        {
-           if (head == NULL)
-            {
-                cout << "Stachis empty"
-                    return 0;
-            }
-          int x = rear -> data;
-
+    string pop_front()
+    {
+      
+        
+        // Data in the front node
+        string ret = head->data;
         // Delete the front node and fix the links
-        Node* temp = rear;
-        if ( rear->prev != NULL )
+        Node* tmp = head;
+        if (head->next != NULL)
         {
-            rear = rear->prev;
-            rear->next = NULL;
+            head = head->next;
+            head->prev = NULL;
         }
         else
         {
-            rear = NULL;
+            head = NULL;
         }
         count--;
-        delete temp;
-
-        return x;
+        delete tmp;
+        
+        return ret;
     }
-        };
+    string pop_backk()
+    {
+
+        // Data in the rear node
+        string ret = tail->data;
+        
+        // Delete the front node and fix the links
+        Node* tmp = tail;
+        if (tail->prev != NULL)
+        {
+            tail = tail->prev;
+            tail->next = NULL;
+        }
+        else
+        {
+            tail = NULL;
+        }
+        count--;
+        delete tmp;
+        
+        return ret;
+    }
 };
 
 
