@@ -16,7 +16,7 @@ class char_deque
     Node *head;
     Node* tail;
     public:
-       void push_front (int x)
+       void push_front (int x)//добавление в начало
         {
            if (head == NULL)
             {
@@ -30,7 +30,7 @@ class char_deque
             head = head -> prev;
             head -> data = x;
         };
-        void push_back (int x)
+        void push_back (int x) // добавление в конец
     {
         if (head == NULL)
         {
@@ -44,7 +44,58 @@ class char_deque
         tail = tail -> next;
         tail -> data = x;
     };
+    void pop_front () // удаление в начале
+        {
+              if (head == NULL)
+            {
+                cout << "Stachis empty"
+                    return 0;
+            }
+        int x = front -> data;
+        Node* temp = front;
+        if ( front -> next != NULL )
+        {
+            front = front -> next;
+            front -> prev = NULL;
+        }
+        else
+        {
+            front = NULL;
+        }
+        count--;
+        delete temp;
+
+        return x;
+    }
+        };
+    void pop_back ()//удаление в конце
+        {
+           if (head == NULL)
+            {
+                cout << "Stachis empty"
+                    return 0;
+            }
+          int x = rear -> data;
+
+        // Delete the front node and fix the links
+        Node* temp = rear;
+        if ( rear->prev != NULL )
+        {
+            rear = rear->prev;
+            rear->next = NULL;
+        }
+        else
+        {
+            rear = NULL;
+        }
+        count--;
+        delete temp;
+
+        return x;
+    }
+        };
 };
+
 
 int main ()
 {
