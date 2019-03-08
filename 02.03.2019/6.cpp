@@ -29,7 +29,8 @@ bool BalancedParentheses(string b)
 	}
 	return A.empty();
 }
-int main()	{	
+int main()	
+{	
 	string c;
 	cout << "Enter an expression: ";
 	cin >> c;
