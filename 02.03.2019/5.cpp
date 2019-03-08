@@ -80,7 +80,7 @@ public:
 		Node* temp = temp->next;
 		temp->prev = temp;
 		temp->next = temp->next->next;
-		delete tmp;
+		delete temp;
 	}
 	~int_linked_list() {
 		while (head != NULL) {
