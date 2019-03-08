@@ -113,7 +113,25 @@ class AVLTree {
             return balance(min);
         }
         return balance(p);
-    }
+    };
+   // колличество элементов на уровне level
+        int nelem (struct btree *p, int level)
+                            {
+                                static int i = 0,  cnt = 0;
+                                if ( p == NULL )
+                                    return 0;
+                                else if (i == level)
+                                    return p -> elem;
+                                else
+                                {
+                                    i++;
+                                    cnt += nelem (p -> left, level);
+                                    cnt += nelem (p -> right, level);
+                                }
+                                return cnt;
+                            };
+
+ 
     
 };
 
