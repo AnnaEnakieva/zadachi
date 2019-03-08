@@ -2,26 +2,30 @@
 #include <iostream>
 #include<stack>
 using namespace std;
-class stack_with_max {
+class stack_with_max 
+{
 	stack <int> s;
 	int MAX;
 public:
 	void getMAX()
 	{
 		if (s.empty())
-			cout << "Stack is empty\n";
+			cout << "Стек пуст\n";
 		else
-			cout << "Maximum Element in the stack is: " << MAX << "\n";
+			cout << "Максимальный элемент в стеке: " << MAX << "\n";
 	}
-	void pop()	{
-		if (s.empty()) {
-			cout << "Stack is empty\n";
+	void pop()	
+	{
+		if (s.empty()) 
+		{
+			cout << "Стек пуст\n";
 			return;
 		}
-		cout << "Top Most Element Removed: ";
+		cout << "Самый верхний элемент удален: ";
 		int t = s.top();
 		s.pop();
-		if (t > MAX) {
+		if (t > MAX) 
+		{
 			cout << MAX << "\n";
 			MAX = 2 * MAX - t;
 		}
@@ -29,29 +33,32 @@ public:
 		else
 			cout << t << "\n";
 	}
-	void push(int x)	{
-		if (s.empty()) {
+	void push(int x)	
+	{
+		if (s.empty()) 
+		{
 			MAX = x;
 			s.push(x);
-			cout << "Number Inserted: " << x << "\n";
+			cout << "Номер вставлен: " << x << "\n";
 			return;
 		}
-		if (x > MAX) {
+		if (x > MAX)
+		{
 			s.push(2 * x - MAX);
 			MAX = x;
 		}
 		else
 		s.push(x);
-		cout << "Number Inserted: " << x << "\n";
+		cout << "Номер вставлен: " << x << "\n";
 	}
 };
 int main() {
 	stack_with_max A;
-	A.push(3);
-	A.push(5);
+	A.push(2);
+	A.push(4);
 	A.getMAX();
-	A.push(7);
-	A.push(19);
+	A.push(6);
+	A.push(18);
 	A.getMAX();
 	A.pop();
 	A.getMAX();
