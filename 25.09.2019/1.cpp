@@ -1,4 +1,4 @@
-/*функция, переводящая матрицу в список ребер*/
+/*функция, переводящая матрицу в список ребер для неориентированного графа*/
 
 #include<iostream>
 using namespace std;
@@ -28,7 +28,7 @@ void** matrix_listreber(int N, int M, int **matrix)
     }
    /* delete []nachalo;
     delete []konez;*/
-}
+};
 
 
 int main ()
@@ -38,22 +38,26 @@ int main ()
     int n, m;
     cin  >> n >> m;// n-ребра, m - вершины
      // матрица смежности
-    int matrix[m][m];
     cout  << "введите матрицу";
-    for (int i = 0; i < m; i++ )
-    {
-        for (int j = 0; j < m; j++)
+    int** matrix = new int*[m];
+    for (int i = 0; i < m; ++i)
         {
-            cin >> matrix[i][j];
+            matrix [i] = new int [m];
         }
-    }
-    for (int i = 0; i < m; i++ )
-    {
-        for (int j = 0; j < m; j++)
+    for (int i = 0; i < m; i++)
         {
-            cout  << matrix[i][j] << " ";
+            for (int j = 0; j < m; j++)
+            {
+                cin >> matrix[i][j];
+            }
         }
-        cout << endl;
-    }
+    for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                cout << matrix[i][j] << " ";
+            }
+            cout << endl;
+        }
     matrix_listreber ( n, m, matrix);
   }
