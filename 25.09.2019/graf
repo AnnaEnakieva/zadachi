@@ -1,4 +1,3 @@
-#include "pch.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -211,7 +210,6 @@ int main()
 		matrix_listR(matrix, n);
 	}
 
-
 	if (ind == 3) {
 		cout << endl << "Введите список ребер" << endl;
 		vector <vector <int>> listR;                    // Список ребер
@@ -230,5 +228,6 @@ int main()
 		cout << endl << endl << "Список смежности" << endl;
 		listR_listSM(listR, n, E);
 	}
+	
 	return 0;
 }
