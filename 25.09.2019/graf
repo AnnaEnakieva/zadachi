@@ -1,0 +1,234 @@
+#include "pch.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void print (vector <vector <int>>& list) {     // Вывод
+	for (int i = 0; i < list.size(); i++) {
+		for (int j = 0; j < list[i].size(); j++)
+			cout << list[i][j] << " ";
+		cout << endl;
+	}
+}
+
+
+void listR_listSM(vector <vector <int>>& listR, int n, int E) { // Список ребер -> список смежности
+	vector <vector <int>> listSM (n);
+	for (int m = 0; m < n; m++) {
+		int i = 0;
+		vector <int> lineSM;
+		while (i != E) {
+			if (listR[i][0] == m + 1) {
+				lineSM.push_back(listR[i][1]);
+			}
+			if (listR[i][1] == m + 1) {
+				lineSM.push_back(listR[i][0]);
+			}
+			i++;
+		}
+		listSM.push_back(lineSM);
+	}
+	print(listSM);
+}
+
+
+void listSM_listR(vector <vector <int>>& listSM, int n, int E) {  // Список смежности -> список ребер
+	vector <vector <int>> listR;
+	int m = 0, e = 0;
+	for (int i = 1; i < E; i++) {
+
+		while (listSM[m][e + 1] != 0) {
+
+			for (int j = 0; j < 1; j++) {
+				vector<int> lineR;
+				if (m + 1 < listSM[m][e]) {
+					lineR.push_back(m + 1);
+					lineR.push_back(listSM[m][e]);
+				}
+				else {
+					lineR.push_back(listSM[m][e]);
+					lineR.push_back(m + 1);
+				}
+				listR.push_back(lineR);
+				e++;
+			}
+
+		}
+		m++;
+		e = 0;
+    }
+	sort(listR.begin(), listR.end());
+	listR.erase(unique(listR.begin(), listR.end()), listR.end());
+	print(listR);
+}
+
+void listR_matrix(vector <vector <int>> listR, int n, int E) {  // Список ребер -> матрица смежности
+	vector<vector<int>> matrix;
+	int m = 0, e = 0;
+	for (int i = 1; i < n + 1; i++) {
+		vector<int> lineM;
+		for (int j = 1; j < n + 1; j++) {
+			if ((i == listR[m][e] && j == listR[m][e + 1]) || (i == listR[m][e + 1] && j == listR[m][e])) {
+				lineM.push_back(1);
+				if (m < E - 1) {
+					m++;
+				}
+			}
+			else {
+				lineM.push_back(0);
+			}
+		}
+		matrix.push_back(lineM);
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j + i < n; j++) {
+			matrix[j + i][i] = matrix[i][j + i];
+		}
+	}
+	
+
+	print(matrix);
+}
+
+
+void matrix_listR(vector<vector<int>>& matrix, int n) {   // Матрица -> список ребер
+	vector <vector <int>> listR;
+	for (int i = 0; i < n; i++) {
+		
+		for (int j = 0; j + i + 1 < n; j++) {
+			if (matrix[i][j + i + 1] == 1) {
+				vector<int> lineR;
+				lineR.push_back(i + 1);
+				lineR.push_back(j + i + 2);
+				listR.push_back(lineR);
+			}
+		}
+		
+	}
+	print(listR);
+}
+
+
+
+void listSM_matrix(vector <vector <int>>& listSM, int n) {   // Список смежности ->  матрица
+	vector<vector<int>> matrix;
+	for (int i = 0; i < n; i++) {
+		vector<int> lineM;
+		int m = 0;
+		for (int j = 0; j < n; j++) {
+			if (listSM[i][m] == j + 1) {
+				lineM.push_back(1);
+				m++;
+			}
+			else {
+				lineM.push_back(0);
+			}
+		}
+		matrix.push_back(lineM);
+	}
+	print(matrix);
+}
+
+
+void matrix_listSM (vector<vector<int>>& matrix, int n) {    // Матрица -> список смежности
+	vector <vector <int>> listSM;
+	for (int i = 0; i < n; i++) {
+		vector<int> lineSM;
+		for (int j = 0; j < n; j++) {
+			if (matrix[i][j] == 1) {
+				lineSM.push_back(j + 1);
+			}
+		}
+		listSM.push_back(lineSM);
+	}
+
+	cout << endl << endl << endl;
+
+	print(listSM);
+}
+
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	cout << "Количество вершин ";
+	int n; // Количество вершин
+	cin >> n;
+	cout << endl;
+	cout << "Количество ребер ";
+	int E; // Количество ребер
+	cin >> E;
+	cout << endl;
+
+	int ind; // Индикатор
+	cout << "Из чего: список смежности - 1; матрица смежности - 2; список ребер - 3 " << endl;
+	cin >> ind;
+	
+
+	if (ind == 1) {
+		cout << endl << "Введите список смежности" << endl;
+		vector <vector <int>> listSM;                          // Список смежности
+		int count;
+		for (int i = 0; i < n; i++) {
+			cout << "Количество смежных вершин для данной ";
+			cin >> count;
+			cout << endl;
+			vector<int> lineSM;
+			for (int j = 0; j < count; j++) {
+				int number;
+				cin >> number;
+				lineSM.push_back(number);
+				cout << " ";
+			}
+			lineSM.push_back(count);
+			lineSM.push_back(0);
+			listSM.push_back(lineSM);
+		}
+		cout << endl << "Матрица смежности" << endl;
+		listSM_matrix(listSM, n);
+		cout << endl << "Список ребер " << endl << endl;
+		listSM_listR(listSM, n, E);
+	}
+
+
+	if (ind == 2) {
+		cout << endl << "Введите матрицу смежности" << endl;
+		vector <vector <int>> matrix;                   // Матрица смежности
+		for (int i = 0; i < n; i++) {
+			vector<int> lineM;
+			for (int j = 0; j < n; j++) {
+				int number;
+				cin >> number;
+				lineM.push_back(number);
+				cout << " ";
+			}
+			matrix.push_back(lineM);
+		}
+		cout << endl << "Список смежности" << endl;
+		matrix_listSM(matrix, n);
+		cout << endl << "Список ребер" << endl;
+		matrix_listR(matrix, n);
+	}
+
+
+	if (ind == 3) {
+		cout << endl << "Введите список ребер" << endl;
+		vector <vector <int>> listR;                    // Список ребер
+		for (int i = 0; i < E; i++) {
+			vector<int> lineR;
+			for (int j = 0; j < 2; j++) {
+				int number;
+				cin >> number;
+				lineR.push_back(number);
+				cout << " ";
+			}
+			listR.push_back(lineR);
+		}
+		cout << endl << "Матрица смежности" << endl;
+		listR_matrix(listR, n, E);
+		cout << endl << endl << "Список смежности" << endl;
+		listR_listSM(listR, n, E);
+	}
+	return 0;
+}
